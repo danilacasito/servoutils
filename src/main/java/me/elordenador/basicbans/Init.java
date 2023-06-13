@@ -24,7 +24,7 @@ public class Init extends JavaPlugin {
         this.logger = this.getLogger();
         File configFile = new File(this.getDataFolder(), "config.yml");
         if (!configFile.exists()) {
-            logger.log("config.yml doesn't exist, Creating one for you");
+            System.out.println("config.yml doesn't exist, Creating one for you");
 
             saveResource("config.yml", false);
         }
