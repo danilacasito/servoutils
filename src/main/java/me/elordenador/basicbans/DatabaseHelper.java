@@ -14,7 +14,7 @@ public class DatabaseHelper {
 
     public Boolean createTables() {
         try {
-            Statement statement = connection.createStatement();
+            Statement statement = this.conn.createStatement();
             String createTableQuery = "CREATE TABLE IF NOT EXISTS sanciones (" +
                     "ID INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "Username TEXT," +
