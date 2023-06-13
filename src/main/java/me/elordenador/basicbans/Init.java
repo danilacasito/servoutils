@@ -33,7 +33,7 @@ public class Init extends JavaPlugin {
         ConfigHelper helper = new ConfigHelper(this.config, this.getDataFolder());
         Connection connection = null;
         try {
-            connection = DriverManager.getConnection(helpetr.JDBCString);
+            connection = DriverManager.getConnection(helper.JDBCString);
         } catch (SQLException e) {
             System.err.println("Error al conectar a la base de datos SQLite: " + e.getMessage());
             this.getPluginLoader().disablePlugin(this);
