@@ -1,0 +1,4 @@
+MYSQL: false
+MYSQL_JDBC: 'jdbc_string'
+
+SQLITE_FILE: 'basicbans.db'
