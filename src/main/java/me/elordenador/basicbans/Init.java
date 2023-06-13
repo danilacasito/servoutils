@@ -38,6 +38,11 @@ public class Init extends JavaPlugin {
             System.err.println("Error al conectar a la base de datos SQLite: " + e.getMessage());
             this.getPluginLoader().disablePlugin(this);
         }
+        DatabaseHelper dhelper = new DatabaseHelper(connection);
+        if (!dhelper.createTables()) {
+            System.err.println("There was an error while creating tables, contact developer");
+            this.getPluginLoader().disablePlugin(this);
+        }
         
     }
 
