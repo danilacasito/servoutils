@@ -10,7 +10,7 @@ public class ConfigHelper {
         if (mySQLEnabled) {
             this.JDBCString = config.getString("MYSQL_JDBC");
         } else {
-            this.JDBCString = "jdbc:sqlite:"+dataFolder.getAbsolutePath()+config.getString("SQLITE_FILE");
+            this.JDBCString = "jdbc:sqlite:"+dataFolder.getAbsolutePath()+"/"+config.getString("SQLITE_FILE");
         }
     }
 }
