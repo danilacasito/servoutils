@@ -1,7 +1,7 @@
 name: Compilar y cargar archivo .jar en GitHub Releases (beta)
 
 on:
-  pull_request:
+  push:
     branches:
       - dev
 
