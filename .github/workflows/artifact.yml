@@ -1,0 +1,49 @@
+name: Compilar y cargar archivo .jar en GitHub Releases (beta)
+
+on:
+  pull_request:
+    branches:
+      - dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout del repositorio
+      uses: actions/checkout@v2
+
+    - name: Obtener versión del proyecto desde el build.gradle
+      id: get_version
+      run: echo "::set-output name=version::$(grep version build.gradle | awk '{print $2}' | tr -d \"'\")"
+
+    - name: Configurar JDK
+      uses: actions/setup-java@v2
+      with:
+        java-version: '8' # Reemplaza por la versión de Java requerida
+
+    - name: Ejecutar Gradle Build
+      run: ./gradlew build
+    
+    - name: Crear artefacto
+      run: ./gradlew jar
+
+    - name: Crear versión beta en GitHub Releases
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: beta-${{ steps.get_version.outputs.version }}
+        release_name: Beta ${{ steps.get_version.outputs.version }}
+        draft: false
+        prerelease: true
+
+    - name: Cargar archivo .jar en la versión beta
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./build/libs/file-${{ steps.get_version.outputs.version }}.jar
+        asset_name: your-jar-file.jar
+        asset_content_type: application/java-archive
