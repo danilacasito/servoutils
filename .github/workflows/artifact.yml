@@ -21,6 +21,7 @@ jobs:
       uses: actions/setup-java@v2
       with:
         java-version: '8' # Reemplaza por la versión de Java requerida
+        distribution: 'adopt'
 
     - name: Ejecutar Gradle Build
       run: ./gradlew build
