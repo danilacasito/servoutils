@@ -15,7 +15,7 @@ jobs:
 
     - name: Obtener versión del proyecto desde el build.gradle
       id: get_version
-      run: echo "::set-output name=version::$(grep 'archiveVersion' build.gradle | awk '{print $2}' | tr -d \'\")"
+      run: echo "::set-output name=version::$(grep 'archiveVersion' build.gradle | awk -F '\"' '{print $2}')"
 
     - name: Configurar JDK
       uses: actions/setup-java@v2
@@ -49,6 +49,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./build/libs/file-${{ steps.get_version.outputs.version }}.jar
-        asset_name: your-jar-file.jar
+        asset_path: ./build/libs/BasicBans-${{ steps.get_version.outputs.version }}.jar
+        asset_name: BasicBans-${{ steps.get_version.outputs.version }}-BETA.jar
         asset_content_type: application/java-archive
