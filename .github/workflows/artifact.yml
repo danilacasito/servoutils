@@ -15,7 +15,7 @@ jobs:
 
     - name: Obtener versión del proyecto desde el build.gradle
       id: get_version
-      run: echo "::set-output name=version::$(grep version build.gradle | awk '{print $2}' | tr -d \'\")"
+      run: echo "::set-output name=version::$(grep 'archiveVersion' build.gradle | awk '{print $2}' | tr -d \'\")"
 
     - name: Configurar JDK
       uses: actions/setup-java@v2

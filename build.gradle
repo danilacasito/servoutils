@@ -26,6 +26,6 @@ dependencies {
 }
 
 jar {
-    archiveBaseName = "test"
+    archiveBaseName = "BasicBans"
     archiveVersion = "0.1"
 }
