@@ -6,3 +6,7 @@ commands:
     description: Ban a user from the server
     usage: /<command> <username> <reason>
     permission: basicbans.ban
+  vanish:
+    description: Vanish you from the server
+    usage: /<command>
+    permission: basicbans.vanish

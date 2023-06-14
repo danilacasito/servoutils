@@ -17,6 +17,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import me.elordenador.basicbans.commands.CommandBan;
+import me.elordenador.basicbans.commands.VanishManager;
 
 public class Init extends JavaPlugin {
     public Logger logger;
@@ -47,6 +48,7 @@ public class Init extends JavaPlugin {
         }
 
         this.getCommand("ban").setExecutor(new CommandBan(connection));
+        this.getCommand("vanish").setExecutor(new VanishManager());
         
     }
 
