@@ -1,3 +1,8 @@
 main: me.elordenador.basicbans.Init
 name: BasicBans
 version: 0.1
+commands:
+  ban:
+    description: Ban a user from the server
+    usage: /<command> <username> <reason>
+    permission: basicbans.ban

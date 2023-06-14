@@ -25,12 +25,36 @@ public class CommandBan implements CommandExecutor {
         // Argumentos:
         // username (Public username)
         // Reason (all arguments)
-
+        String modName = null;
         if (sender instanceof Player) {
-            System.out.println("IS Player");
+            modName = Player.getName();
+        } else {
+            modName = "CONSOLE";
         }
-        
-        return false;
+        String player = args[0];
+        String reason = String.join(" ", args, 1, args.length);      
+        if (banPlayer(player, reason, modName)) {
+            sender.sendMessage("The user "+username+" was banned from the server");
+        } else {
+            sender.sendMessage("We couldn't ban the player, see the console for more details");
+        }
+        return true;
+    }
+
+    private boolean banPlayer(String username, String reason, String modName) {
+        try {
+            String query = "INSERT INTO sanciones (Username, ModName, Time, Reason) VALUES (?, ?, ?, ?)";
+            PreparedStatement statement = this.conn.prepareStatement(query);
+            statement.setString(1, username);
+            statement.setString(2, modName);
+            statement.setTimestamp(3, Timestamp.from(Instant.now()));
+            statement.setString(4, reason);
+            statement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
 }

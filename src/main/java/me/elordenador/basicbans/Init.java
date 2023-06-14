@@ -16,6 +16,8 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import me.elordenador.basicbans.commands.CommandBan;
+
 public class Init extends JavaPlugin {
     public Logger logger;
     private FileConfiguration config;
@@ -43,6 +45,8 @@ public class Init extends JavaPlugin {
             System.err.println("There was an error while creating tables, contact developer");
             this.getPluginLoader().disablePlugin(this);
         }
+
+        this.getCommand("ban").setExecutor(new CommandBan(connection));
         
     }
 
