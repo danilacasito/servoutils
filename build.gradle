@@ -27,5 +27,5 @@ dependencies {
 
 jar {
     archiveBaseName = "BasicBans"
-    archiveVersion = "0.2.2"
+    archiveVersion = "0.2.3"
 }
