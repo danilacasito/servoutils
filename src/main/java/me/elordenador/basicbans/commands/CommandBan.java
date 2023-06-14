@@ -27,13 +27,13 @@ public class CommandBan implements CommandExecutor {
         // Reason (all arguments)
         String modName = null;
         if (sender instanceof Player) {
-            modName = Player.getName();
+            modName = sender.getName();
         } else {
             modName = "CONSOLE";
         }
-        String player = args[0];
+        String username = args[0];
         String reason = String.join(" ", args, 1, args.length);      
-        if (banPlayer(player, reason, modName)) {
+        if (banPlayer(username, reason, modName)) {
             sender.sendMessage("The user "+username+" was banned from the server");
         } else {
             sender.sendMessage("We couldn't ban the player, see the console for more details");
