@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.Instant;
 
+import java.util.ArrayList;
+
 
 public class CommandBan implements CommandExecutor {
     Connection conn = null;
@@ -32,7 +34,7 @@ public class CommandBan implements CommandExecutor {
             modName = "CONSOLE";
         }
         String username = args[0];
-        String reason = String.join(" ", args, 1, args.length);      
+        String reason = this.makeReason(args);   
         if (banPlayer(username, reason, modName)) {
             sender.sendMessage("The user "+username+" was banned from the server");
         } else {
@@ -55,6 +57,15 @@ public class CommandBan implements CommandExecutor {
             e.printStackTrace();
             return false;
         }
+    }
+    
+    private String makeReason(String[] args) {
+        ArrayList<String> text = new ArrayList<String>();
+        for (int i = 1; i < args.length; i++) {
+            text.add(args[i]);
+        }
+        String reason = String.join(" ", text);
+        return reason;
     }
 
 }
