@@ -12,5 +12,6 @@ public class ConfigHelper {
         } else {
             this.JDBCString = "jdbc:sqlite:"+dataFolder.getAbsolutePath()+"/"+config.getString("SQLITE_FILE");
         }
+        // no
     }
 }
