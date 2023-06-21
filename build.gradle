@@ -23,14 +23,14 @@ configurations {
 dependencies {
   // Pick only one of these and read the comment in the repositories block.
   compileOnly 'org.spigotmc:spigot-api:1.19.3-R0.1-SNAPSHOT' // The Spigot API with no shadowing. Requires the OSS repo.
-  extraLibs 'com.mysql:mysql-connector-j:8.0.33'
+  //extraLibs 'com.mysql:mysql-connector-j:8.0.33'
   extraLibs 'org.xerial:sqlite-jdbc:3.42.0.0'
   
 }
 
 jar {
     archiveBaseName = "servoutils"
-    archiveVersion = "0.2.5b2"
+    archiveVersion = "0.2.5b3"
     from {
         configurations.extraLibs.collect { it.isDirectory() ? it : zipTree(it) }
     }
