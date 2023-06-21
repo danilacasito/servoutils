@@ -24,7 +24,11 @@ public class Init extends JavaPlugin {
     private FileConfiguration config;
     @Override
     public void onEnable() {
-        Class.forName("org.sqlite.JDBC");
+        try {
+            Class.forName("org.sqlite.JDBC");
+        } catch (ClassNotFoundException e) {
+             e.printStackTrace(); // Imprime el rastreo de la excepción para depuración
+};
         this.logger = this.getLogger();
         File configFile = new File(this.getDataFolder(), "config.yml");
         if (!configFile.exists()) {
