@@ -30,7 +30,7 @@ dependencies {
 
 jar {
     archiveBaseName = "servoutils"
-    archiveVersion = "0.2.5b3"
+    archiveVersion = "0.2.5b4"
     from {
         configurations.extraLibs.collect { it.isDirectory() ? it : zipTree(it) }
     }

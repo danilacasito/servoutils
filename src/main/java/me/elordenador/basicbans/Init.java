@@ -24,6 +24,7 @@ public class Init extends JavaPlugin {
     private FileConfiguration config;
     @Override
     public void onEnable() {
+        Class.forName("org.sqlite.JDBC");
         this.logger = this.getLogger();
         File configFile = new File(this.getDataFolder(), "config.yml");
         if (!configFile.exists()) {
